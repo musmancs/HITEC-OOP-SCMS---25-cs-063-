@@ -6,7 +6,7 @@ class Journal : public LibraryItem {
 private:
     string ISSN;
     int volume;
-    int issueNumber;
+    int issueNumber
 public:
     Journal(string id, string t, string a, int year, string issn, int vol, int issue)
         : LibraryItem(id, t, a, year), ISSN(issn), volume(vol), issueNumber(issue) {}
