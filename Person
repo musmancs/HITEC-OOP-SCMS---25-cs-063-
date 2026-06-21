@@ -1,0 +1,50 @@
+/**
+ * @file ExceptionsAndUtils.h
+ * @brief Custom system-wide exceptions and namespace utilities
+ * @inst HITEC University Taxila
+ * OOP Concepts: Custom Exception Classes, Namespaces
+ */
+#ifndef EXCEPTIONS_AND_UTILS_H
+#define EXCEPTIONS_AND_UTILS_H
+
+#include <iostream>
+#include <exception>
+#include <string>
+
+using namespace std;
+
+// Module 2 Exception
+class CapacityExceededException : public exception {
+private:
+    string message;
+public:
+    CapacityExceededException(string msg) : message("CapacityExceededException: " + msg) {}
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
+};
+
+// Module 3 Exception
+class OverdueException : public exception {
+private:
+    string message;
+    double fineAmount;
+public:
+    OverdueException(string msg, double fine) : message("OverdueException: " + msg), fineAmount(fine) {}
+    double getFine() const { return fineAmount; }
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
+};
+
+namespace SCMS {
+    namespace Utils {
+        inline void printHeader(string title) {
+            cout << "\n==================================================\n";
+            cout << "  " << title << "\n";
+            cout << "==================================================\n";
+        }
+    }
+}
+
+#endif // EXCEPTIONS_AND_UTILS_H
